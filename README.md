@@ -65,7 +65,7 @@ IM-IAD
 + Shell command, "python3 main.py -v -m _example -n net_example -d _example -tid 0 -vid 0 -g 1"
 
 
-##支持的数据集（通过 --dataset 或 -d 指定）
+## 支持的数据集（通过 --dataset 或 -d 指定）
 
 > 2D: mvtec2d, mpdd, mvtecloco, mtd, btad, mvtec2df3d, coad
 
