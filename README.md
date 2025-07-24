@@ -109,9 +109,8 @@ IM-IAD
 | | **continual** | `-c`   | 同时使用 `id=0` 和 `id=1` 类的完整数据                       | 使用 `id=0` 和 `id=1` 的测试集        | 持续学习设定：学习新类不遗忘旧类       |
 | | **noisy**     | `-z`   | `id=0` 中的正常图 + 伪异常图（即 noisy 数据）                   | `id=0` 中的测试图，但不含训练中用过的 noisy 图 | 模拟异常检测中的伪标签干扰或缺陷混淆情形   |
 | | **transfer**  | `-t`   | Step 1：完整训练 `id=0` 类<br>Step 2：对 `id=1` 类少量数据进行微调 | 分别在 `id=0` 和 `id=1` 上评估        | 跨类迁移学习，适合研究模型的泛化能力     |
-| $\bigstar$ | *centralized 2d* | -p c2d | |  |
-| $\bigstar$ | *centralized 3d* | -p c3d | To be updated! | 1312|  123123 | 
-| $\bigstar$ | *federated 2d* | -p f2d |  To be updated! | 13213 | 221345|
+| $\bigstar$ | *centralized 3d* | -p c3d | To be updated! | |   | 
+| $\bigstar$ | *federated 2d* | -p f2d |  To be updated! |  | |
 
 
 ## 2D Model
