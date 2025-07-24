@@ -1,9 +1,7 @@
 # IM-IAD: 制造业工业图像异常检测基准
 
 
-We are dedicated to provide researchers a uniform verification environment of image anomaly detection with standard settings and methods. At the same time, everyone is warmly invited to add their algorithms and new features into IM-IAD. Finally, we appreciate all the contributors who maintain this community.
-
-The project is being continuously updated. If any issues are found, please contact us promptly.
+致力于为研究者提供一个统一的图像异常检测验证环境，配有标准配置和方法。
 
 [[Main Page]](https://github.com/M-3LAB) [[Survey]](https://github.com/M-3LAB/awesome-industrial-anomaly-detection) [[Benchmark]](https://github.com/M-3LAB/open-iad) [[Result]](https://github.com/M-3LAB/IM-IAD)
 ## Envs
@@ -22,32 +20,33 @@ pip install opencv-python
 ## Project Instruction
 ```bash
 IM-IAD
-├── arch # model base class
-├── augmentation # data augmentation
-├── checkpoints # pretrained or requirements
-├── configuration
-│   ├── 1_model_base # highest priority
-│   ├── 2_train_base # middle priority
-│   ├── 3_dataset_base # lowest priority
-│   ├── config.py # for main.py
-│   ├── device.py # for device
-│   └── registeration.py # register new model, dataset, server
-├── data_io # loading data interface
-├── dataset # dataset interface
-├── loss_function
-├── metric
-├── models # basic layers for model class in arch_base
-├── optimizer
-├── paradigms # learning paradigms
+├── arch                 # 模型基础类
+├── augmentation         # 数据增强
+├── checkpoints          # 预训练模型或依赖
+├── configuration        # 配置文件目录
+│   ├── 1_model_base     # 模型配置（优先级最高）
+│   ├── 2_train_base     # 训练配置（中等优先级）
+│   ├── 3_dataset_base   # 数据集配置（优先级最低）
+│   ├── config.py        # 主配置入口
+│   ├── device.py        # 设备管理
+│   └── registeration.py # 注册新模型、数据集等
+├── data_io              # 数据加载接口
+├── dataset              # 数据集处理
+├── loss_function        # 损失函数
+├── metric               # 评估指标
+├── models               # 模型模块的基础层
+├── optimizer            # 优化器
+├── paradigms            # 学习范式（集中式、联邦式）
 │   ├── centralized
-│   │   ├── c2d.py # 2D
-│   │   ├── c3d.py # 3D
+│   │   ├── c2d.py       # 2D集中式训练
+│   │   ├── c3d.py       # 3D集中式训练
 │   └── federated
-│       └── f2d.py # 2D
-├── tools
-├── work_dir # save results
-├── main.py # run start, with configuration/config.py
-└── requirements.txt
+│       └── f2d.py       # 2D联邦式训练
+├── tools                # 工具函数
+├── work_dir             # 保存结果目录
+├── main.py              # 项目主入口
+└── requirements.txt     # 依赖库列表
+
 ```
 
 ## Dataset (--dataset / -d)
