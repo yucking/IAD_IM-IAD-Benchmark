@@ -46,8 +46,24 @@ IM-IAD
 ├── work_dir             # 保存结果目录
 ├── main.py              # 项目主入口
 └── requirements.txt     # 依赖库列表
-
 ```
+## 教程
+
+### 如何添加新方法或新数据集？
+
+> Please refer to the following steps:
+
++ Register your NEW METHOD (e.g., MODEL, NET, DATASET, SETTING, SERVER) in [configuration/registration.py](configuration/registration.py)
++ Add names of MODEL, NET, DATASET, SETTING into [configuration/config.py](configuration/config.py)
++ Implement MODEL in [arch/_example.py](arch/_example.py) and [models/_example/net_example.py](models/_example/net_example.py)
++ Put MODEL configuration in [configuration/1_model_base/_example.yaml](configuration/1_model_base/_example.yaml)
++ Implement DATASET in [dataset/_example.py](dataset/_example.py)
++ Put DATASET configuration in [configuration/3_dataset_base/_example.yaml](configuration/3_dataset_base/_example.yaml)
++ Implement NEW SETTING in [data_io/data_holder.py](data_io/data_holder.py)
++ If provide NEW SETTING, update OUTPUT path of results in [tools/record_helper.py](tools/record_helper.py)
++ Add NEW METHOD description in [README.md](README.md)
++ Shell command, "python3 main.py -v -m _example -n net_example -d _example -tid 0 -vid 0 -g 1"
+
 
 ##支持的数据集（通过 --dataset 或 -d 指定）
 
@@ -216,22 +232,3 @@ python3 main.py -t -ttn 8 -m patchcore -n wide_resnet50 -d coad -tid 0 -vid 1 -g
 python3 main.py -t -ttn 8 -m stpm -n resnet18 -d coad -tid 0 -vid 1 -g 1
 python3 main.py -t -ttn 8 -m simplenet -n wide_resnet50 -d coad -tid 0 -vid 1 -g 1
 ```
-
-
-
-## 教程
-
-### 如何添加新方法或新数据集？
-
-> Please refer to the following steps:
-
-+ Register your NEW METHOD (e.g., MODEL, NET, DATASET, SETTING, SERVER) in [configuration/registration.py](configuration/registration.py)
-+ Add names of MODEL, NET, DATASET, SETTING into [configuration/config.py](configuration/config.py)
-+ Implement MODEL in [arch/_example.py](arch/_example.py) and [models/_example/net_example.py](models/_example/net_example.py)
-+ Put MODEL configuration in [configuration/1_model_base/_example.yaml](configuration/1_model_base/_example.yaml)
-+ Implement DATASET in [dataset/_example.py](dataset/_example.py)
-+ Put DATASET configuration in [configuration/3_dataset_base/_example.yaml](configuration/3_dataset_base/_example.yaml)
-+ Implement NEW SETTING in [data_io/data_holder.py](data_io/data_holder.py)
-+ If provide NEW SETTING, update OUTPUT path of results in [tools/record_helper.py](tools/record_helper.py)
-+ Add NEW METHOD description in [README.md](README.md)
-+ Shell command, "python3 main.py -v -m _example -n net_example -d _example -tid 0 -vid 0 -g 1"
