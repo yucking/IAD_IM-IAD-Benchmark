@@ -49,13 +49,13 @@ IM-IAD
 
 ```
 
-## Dataset (--dataset / -d)
+##支持的数据集（通过 --dataset 或 -d 指定）
 
 > 2D: mvtec2d, mpdd, mvtecloco, mtd, btad, mvtec2df3d, coad
 
 > 3D: mvtec3d
 
-The dataset's structure can be organized as follows (i.e., mvtec2d).
+示例目录结构（以 mvtec2d 为例）：
 ```bash
 .
 ├── bottle
@@ -82,20 +82,20 @@ The dataset's structure can be organized as follows (i.e., mvtec2d).
 ├── screw
 └── ...
 ```
-## Learning Paradigm
+## 学习范式（Learning Paradigm）
 
-|| Prototypes | Marker | Train | Test |
-| ------ | ------ | ---| -------|------ |
-| $\bigstar$ | *centralized 2d* | -p c2d | |
-|  | vanilla | -v |all data (id=0) | all data (id=0) |
-|  | semi | -s | all data (id=0) + anomaly data (id=0) | all data (id=0) - anomaly data (id=0)|
-|  | fewshot | -f | fewshot (id=0) | all data (id=0) |
-|  | continual | -c| all data (id=0 and 1)| all data (id=0 or 1)|
-|  | noisy | -z | all data (id=0) + noisy data (id=0) | all data (id=0) - noisy data (id=0)|
-|  | transfer | -t | step 1: all data (id=0) | all data (id=0)|
-|  |  |  | step 2: fewshot data (id=1) | all data (id=1)|
+| 类型 | 模式             | 标记       | 训练集             | 测试集                                    |
+| -- | -------------- | -------- | --------------- | -------------------------------------- |
+| ⭐  | centralized 2d | `-p c2d` | 如下              |                                        |
+|    | vanilla        | `-v`     | 使用全部正常图（id=0）   | 使用全部正常与异常图                             |
+|    | semi           | `-s`     | 使用全部正常图 + 一些异常图 | 不使用训练中出现的异常图                           |
+|    | fewshot        | `-f`     | 使用少量样本          | 使用全部测试图                                |
+|    | continual      | `-c`     | 使用多个阶段的数据       | 测试也包含多阶段数据                             |
+|    | noisy          | `-z`     | 使用加噪声数据         | 测试为无噪声图                                |
+|    | transfer       | `-t`     | 两阶段迁移学习         | 第一步训练 id=0，第二步 fewshot 训练 id=1，测试 id=1 |
 | $\bigstar$ | *centralized 3d* | -p c3d | To be updated! |
 | $\bigstar$ | *federated 2d* | -p f2d |  To be updated! |
+
 
 ## 2D Model
 | No. | Method / -m | Net / -n | Paper Title|
@@ -217,22 +217,11 @@ python3 main.py -t -ttn 8 -m stpm -n resnet18 -d coad -tid 0 -vid 1 -g 1
 python3 main.py -t -ttn 8 -m simplenet -n wide_resnet50 -d coad -tid 0 -vid 1 -g 1
 ```
 
-## Run the Notebook on Google Colab
-
-You can easily run this code on google colab by just clicking this badge [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/M-3LAB/open-iad/blob/main/Google%20Colab/IM_IAD_RD4AD.ipynb)
-
-do not change anything on the inpyb file when opening on the google colab every thing is working well.
-
-just you need to change option 6 for downloading the dataset you are interested in and it's in project dataset folder like mvtec2d dataset i have used.
-
-and you need to cutomize your own command to run the project in step 7.
-
-notice that run the notbook with the GPU.
 
 
-## Tutorial
+## 教程
 
-### How to implement your own methods or datasets, i.e, integrating new methods into the open-iad project?
+### 如何添加新方法或新数据集？
 
 > Please refer to the following steps:
 
